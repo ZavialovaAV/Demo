@@ -1,101 +1,65 @@
-#include <iostream> 
-#include <cmath> 
-using namespace std; 
-/** 
-* @breef фунцция для вычисления третьей стороны треугольника 
-* @param side1 - первая сторона треугольника 
-* @param side2 - вторая сторона треугольника 
-* @param angle - угол в треугольнике 
-* @return результат вычисления результата 
-*/ 
-double calculateThirdSide(double side1, double side2, double angle); 
- 
-/** 
-* @breef фунцция для вычисления площади треугольника 
-* @param side1 - первая сторона треугольника 
-* @param side2 - вторая сторона треугольника 
-* @param angle - угол в треугольнике 
-* @return результат вычисления результата 
-*/ 
-double calculateTriangleArea(double side1, double side2, double angle); 
- 
-/** 
-* @breef фунцция для вычисления радиуса описанной окружности 
-* @param side1 - первая сторона треугольника 
-* @param side2 - вторая сторона треугольника 
-* @param angle - угол в треугольнике 
-* @return результат вычисления результата 
-*/ 
-double calculateCircumcircleRadius(double side1, double side2, double angle); 
- 
-/** 
-* @brief Считывает значения с клавиатуры с проверкой ввода 
-*/ 
-double getValue(); 
- 
-/** 
-* @brief Функция для конвертации радиан в градусы. 
-* 
-* @param radians Значение в радианах, которое нужно сконвертировать. 
-* @return double Значение в градусах после конвертации. 
-*/ 
-double convertRadiansToDegrees(double radians); 
- 
-/** 
-* @breef получает значение с клавиатуры 
-* @return вычисления третьей стороны треугольника, вычисления площади треугольника, вычисления радиуса описанной окружности 
-*/ 
-int main() 
- 
-{ 
- 
- cout << "Введите длину первой стороны треугольника: "; 
- double side1 = getValue(); 
- cout << "Введите длину второй стороны треугольника: "; 
- double side2 = getValue(); 
- cout << "Введите величину угла между сторонами в радианах: "; 
- double angle = getValue(), convertRadiansToDegrees(double radians);
- 
- cout << "Третья сторона треугольника: " << calculateThirdSide(side1, side2, angle)<< endl; 
- cout << "Площадь треугольника: " <<calculateTriangleArea(side1, side2, angle)<< endl; 
- cout << "Радиус описанной окружности: " <<calculateCircumcircleRadius(side1, side2, angle)<< endl; 
- 
- return 0; 
-} 
- 
-double getValue() 
-{ 
- double value; 
- cin>>value; 
- if (cin.fail()) 
- { 
- cout<<"Incorrect value "<< endl; 
- abort(); 
- } 
- return value; 
-} 
- 
- 
-double calculateThirdSide(double side1, double side2, double angle) 
-{ 
- return sqrt(side1 * side1 + side2 * side2 - 2 * side1 * side2 * cos(angle)); 
-} 
- 
- 
-double calculateTriangleArea(double side1, double side2, double angle) 
-{ 
- double thirdSide = calculateThirdSide(side1, side2, angle); 
- return 0.5 * side1 * side2 * sin(angle); 
-} 
- 
- 
-double calculateCircumcircleRadius(const double side1, const double side2, const double angle) 
-{ 
- double thirdSide = calculateThirdSide(side1, side2, angle); 
- return (side1 * side2 * thirdSide) / (4 * sqrt((side1 + side2 + thirdSide) * (side1 + side2 - thirdSide) * (side2 + thirdSide - side1) * (side1 + thirdSide - side2))); 
-} 
- 
-double convertRadiansToDegrees(double radians) 
-{ 
- return radians * 180.0 / 3.1415; 
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+struct Point {
+    double x;
+    double y;
+};
+
+/**
+ * @brief Функция для проверки ввода корректного числового значения.
+ * @return double Корректное числовое значение.
+ */
+double getValue() {
+    double value;
+    bool inputSuccess = false;
+
+    do {
+        if (!(cin >> value)) {
+            cout << "Некорректное значение. Пожалуйста, введите число." << endl;
+            cin.clear();
+            while (cin.get() != '\n');
+        } else {
+            inputSuccess = true;
+        }
+    } while (!inputSuccess);
+
+    return value;
 }
+
+/**
+ * @brief Функция для вычисления расстояния между двумя точками.
+ * @param p1 Первая точка.
+ * @param p2 Вторая точка.
+ * @return double Расстояние между точками.
+ */
+double distance(Point p1, Point p2) {
+    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+}
+
+/**
+* @breef получает значение с клавиатуры
+* @return нахождение расстояния между двумя точками
+*/
+int main() {
+    setlocale(LC_ALL, "rus");
+
+    Point point1, point2;
+
+    cout << "Введите координаты первой точки (x y): ";
+    point1.x = getValue();
+    point1.y = getValue();
+
+    cout << "Введите координаты второй точки (x y): ";
+    point2.x = getValue();
+    point2.y = getValue();
+
+    double dist = distance(point1, point2);
+    cout << "Расстояние между точками: " << dist << endl;
+
+    return 0;
+}
+
+
