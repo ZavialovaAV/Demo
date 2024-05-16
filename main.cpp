@@ -12,22 +12,7 @@ struct Point {
  * @brief Функция для проверки ввода корректного числового значения.
  * @return double Корректное числовое значение.
  */
-double getValue() {
-    double value;
-    bool inputSuccess = false;
-
-    do {
-        if (!(cin >> value)) {
-            cout << "Некорректное значение. Пожалуйста, введите число." << endl;
-            cin.clear();
-            while (cin.get() != '\n');
-        } else {
-            inputSuccess = true;
-        }
-    } while (!inputSuccess);
-
-    return value;
-}
+double getValue();
 
 /**
  * @brief Функция для вычисления расстояния между двумя точками.
@@ -35,9 +20,7 @@ double getValue() {
  * @param p2 Вторая точка.
  * @return double Расстояние между точками.
  */
-double distance(Point p1, Point p2) {
-    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
-}
+double distance(Point p1, Point p2);
 
 /**
 * @breef получает значение с клавиатуры
@@ -60,6 +43,29 @@ int main() {
     cout << "Расстояние между точками: " << dist << endl;
 
     return 0;
+}
+
+double getValue() 
+{
+    double value;
+    bool inputSuccess = false;
+
+    do {
+        if (!(cin >> value)) {
+            cout << "Некорректное значение. Пожалуйста, введите число." << endl;
+            cin.clear();
+            while (cin.get() != '\n');
+        } else {
+            inputSuccess = true;
+        }
+    } while (!inputSuccess);
+
+    return value;
+}
+
+double distance(Point p1, Point p2); 
+{
+    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
 }
 
 
