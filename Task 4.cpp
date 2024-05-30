@@ -15,7 +15,7 @@ double getValue();
  * @param x Значение аргумента x
  * @return double Значение функции y
  */
-double computeY(double x);
+double computeY(const double x);
 
 /**
  * @brief Основная функция программы
@@ -34,7 +34,7 @@ int main() {
     cout << " x       | y" << endl;
     cout << "----------------" << endl;
 
-    for (double x = x_start; x <= x_end; x += delta_x) {
+    for (double x = x_start; x <= x_end + delta_x) {
         double y = computeY(x);
         cout << fixed << setprecision(4) << x << " | " << y << endl; 
     }
