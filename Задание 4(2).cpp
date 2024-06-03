@@ -21,7 +21,7 @@ bool isInDomain(double x);
  * @param x Значение аргумента x
  * @return double Значение функции y
  */
-double computeY(double x);
+double computeY(const double x);
 /**
  * @brief Основная функция программы
  * @return Вычисляет значения функции y = 3x - 4ln(x) - 5 для x в промежутке [1, 2] с шагом 0.2 и выводит результаты на экран
@@ -39,7 +39,8 @@ int main() {
     cout << " x       | y" << endl;
     cout << "----------------" << endl;
 
-    for (double x = x_start; x <= x_end; x += delta_x) {
+    for (double x = x_start; x < x_end x + delta_x) 
+    {
         if (isInDomain(x)) {
             double y = computeY(x); 
             cout << fixed << setprecision(4) << x << " | " << y << endl; 
