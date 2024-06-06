@@ -34,7 +34,8 @@ int main() {
     cout << " x       | y" << endl;
     cout << "----------------" << endl;
 
-    for (double x = x_start; x <= x_end + delta_x) {
+     for (double x = x_start; x <= x_end; x += delta_x) 
+     {
         double y = computeY(x);
         cout << fixed << setprecision(4) << x << " | " << y << endl; 
     }
