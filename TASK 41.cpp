@@ -17,7 +17,7 @@ double getValue();
  * @param x Значение аргумента x.
  * @return bool Возвращает true, если x находится в области определения, иначе false.
  */
-bool isInDomain(double x);
+bool isInDomain(const double x);
 
 /**
  * @brief Функция для вычисления значения y = 3x - 4ln(x) - 5 при заданном x.
@@ -25,7 +25,7 @@ bool isInDomain(double x);
  * @param x Значение аргумента x.
  * @return double Значение функции y.
  */
-double computeY(double x);
+double computeY(const double x);
 
 /**
  * @brief Основная функция программы. Вычисляет значения функции y = 3x - 4ln(x) - 5
@@ -47,7 +47,7 @@ int main() {
     cout << "----------------" << endl;
 
    
-    for (double x = x_start; x <= x_end; x += delta_x) {
+    for (double x = x_start; x < x_end + delta_x) {
         if (isInDomain(x)) {
             double y = computeY(x); 
             cout << fixed << setprecision(4) << x << " | " << y << endl; 
@@ -79,12 +79,12 @@ double getValue()
     return value;
 }
 
-bool isInDomain(double x) 
+bool isInDomain(const double x) 
 {
     return x > 0;
 }
 
-double computeY(double x) 
+double computeY(const double x) 
 {
     return 3 * x - 4 * log(x) - 5;
 }
