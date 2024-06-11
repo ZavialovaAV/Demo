@@ -129,16 +129,16 @@ int main()
 
     cout << "Сумма отрицательных элементов, значения которых кратны 10: " << sumOfNegativesDivisibleByTen(arr, n) << endl;
 
-    int k; // Переменная k должна быть объявлена и инициализирована перед использованием
+    int k; 
     cout << "Введите количество элементов для реверса: ";
-    k = getNumber();
+    int k = getNumber();
     reverseFirstKElements(arr, k);
     cout << "Массив после реверса первых " << k << " элементов: ";
     printArray(arr, n);
 
     int product;
     cout << "Введите число для проверки произведения соседних элементов: ";
-    product = getNumber();
+    int product = getNumber();
 
     if (hasAdjacentProduct(arr, n, product)) {
         cout << "Есть пара соседних элементов с произведением, равным " << product << endl;
