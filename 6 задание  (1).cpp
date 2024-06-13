@@ -130,14 +130,14 @@ int main()
     cout << "Сумма отрицательных элементов, значения которых кратны 10: " << sumOfNegativesDivisibleByTen(arr, n) << endl;
 
     cout << "Введите количество элементов для реверса: ";
-   int k = getNumber();
+    int k = getNumber();
     reverseFirstKElements(arr, k);
     cout << "Массив после реверса первых " << k << " элементов: ";
     printArray(arr, n);
 
-    
+
     cout << "Введите число для проверки произведения соседних элементов: ";
-   int product = getNumber();
+    int product = getNumber();
 
     if (hasAdjacentProduct(arr, n, product)) {
         cout << "Есть пара соседних элементов с произведением, равным " << product << endl;
@@ -238,11 +238,11 @@ void reverseFirstKElements(int arr[], const int k)
     }
 }
 
-bool hasAdjacentProduct(const int* arr, const int n, const int product) 
+bool hasAdjacentProduct(const int* arr, const int n, const int product)
 {
-    for (size_t i = 0; i < n - 1; ++i) 
+    for (size_t i = 0; i < n - 1; ++i)
     {
-        if (arr[i] * arr[i + 1] == product) 
+        if (arr[i] * arr[i + 1] == product)
         {
             return true;
         }
